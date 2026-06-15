@@ -98,13 +98,13 @@ function Get-PageText {
     Set-Clipboard -Value $jsCode
 
     Send-Key -Key "^+j"
-    Start-Sleep -Milliseconds 1500
+    Start-Sleep -Milliseconds 600
     Send-Key -Key "^v"
-    Start-Sleep -Milliseconds 400
+    Start-Sleep -Milliseconds 200
     Send-Key -Key "{ENTER}"
-    Start-Sleep -Milliseconds 1500
+    Start-Sleep -Milliseconds 600
     Send-Key -Key "{F12}"
-    Start-Sleep -Milliseconds 500
+    Start-Sleep -Milliseconds 200
 
     try {
         $text = Get-Clipboard -Raw
@@ -114,15 +114,15 @@ function Get-PageText {
     # Fallback: Ctrl+U page source
     try { Set-Clipboard -Value " " } catch { }
     Send-Key -Key "^u"
-    Start-Sleep -Milliseconds 3000
+    Start-Sleep -Milliseconds 1500
     Send-Key -Key "^{END}"
-    Start-Sleep -Milliseconds 300
+    Start-Sleep -Milliseconds 150
     Send-Key -Key "^a"
-    Start-Sleep -Milliseconds 500
+    Start-Sleep -Milliseconds 200
     Send-Key -Key "^c"
-    Start-Sleep -Milliseconds 500
+    Start-Sleep -Milliseconds 200
     Send-Key -Key "^w"
-    Start-Sleep -Milliseconds 500
+    Start-Sleep -Milliseconds 200
 
     try {
         $text = Get-Clipboard -Raw
@@ -256,7 +256,7 @@ while ($true) {
     Write-Log ">>> REFRESH (F5) <<<" -Level "WARN"
     Send-Key -Key "{F5}"
 
-    $load = Get-Random -Min 3 -Max 8
+    $load = Get-Random -Min 1 -Max 3
     Write-Log "Waiting for page load (${load}s)..."
     $null = Sleep-Safe -Seconds $load
 
