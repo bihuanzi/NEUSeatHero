@@ -24,6 +24,7 @@ public class W32 {
     [DllImport("user32.dll")]
     public static extern bool IsIconic(IntPtr hWnd);
     public const int SW_RESTORE = 9;
+    public const int SW_MINIMIZE = 6;
 }
 '@
 
@@ -75,6 +76,13 @@ function Activate-Browser {
         return $true
     } catch {
         return $false
+    }
+}
+
+function Minimize-Browser {
+    $hwnd = Get-BrowserHandle
+    if ($hwnd -ne [IntPtr]::Zero) {
+        [W32]::ShowWindow($hwnd, [W32]::SW_MINIMIZE) | Out-Null
     }
 }
 
@@ -298,6 +306,9 @@ while ($true) {
     $wait = Get-Random -Min $MinInterval -Max $MaxInterval
     $next = (Get-Date).AddSeconds($wait)
     Write-Log "Done. Next refresh at: $($next.ToString('HH:mm:ss'))"
+    
+    # 将浏览器最小化，避免一直置顶
+    Minimize-Browser
     
     $result = Sleep-Safe -Seconds $wait
     if ($result -eq "CTRLC") {
