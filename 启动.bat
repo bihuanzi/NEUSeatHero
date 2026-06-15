@@ -8,7 +8,7 @@ set /p QQ_USER=<"%~dp0qq.txt"
 :: QQ Mail authorization code (get from: QQ Mail -> Settings -> Account -> SMTP)
 set /p QQ_AUTH=<"%~dp0auth.txt"
 :: Keyword to detect on the page
-set KEYWORD=
+set KEYWORD=南湖计算中心
 :: ===========================
 
 cd /d "%~dp0"

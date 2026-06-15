@@ -13,7 +13,7 @@ authFile = dir & "\auth.txt"
 
 qq = ""
 auth = ""
-keyword = ""
+keyword = "南湖计算中心"
 
 If fso.FileExists(qqFile) Then
     Set f = fso.OpenTextFile(qqFile, 1, False, 0)  ' 0 = ASCII
