@@ -23,8 +23,9 @@ public class W32 {
     public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
     [DllImport("user32.dll")]
     public static extern bool IsIconic(IntPtr hWnd);
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
     public const int SW_RESTORE = 9;
-    public const int SW_MINIMIZE = 6;
 }
 '@
 
@@ -79,10 +80,10 @@ function Activate-Browser {
     }
 }
 
-function Minimize-Browser {
-    $hwnd = Get-BrowserHandle
-    if ($hwnd -ne [IntPtr]::Zero) {
-        [W32]::ShowWindow($hwnd, [W32]::SW_MINIMIZE) | Out-Null
+function Restore-ForegroundWindow {
+    param([IntPtr]$hWnd)
+    if ($hWnd -ne [IntPtr]::Zero) {
+        [W32]::SetForegroundWindow($hWnd) | Out-Null
     }
 }
 
@@ -230,6 +231,9 @@ while ($true) {
         continue
     }
 
+    # 记住用户当前前台窗口，稍后还原
+    $prevHwnd = [W32]::GetForegroundWindow()
+
     if (-not (Activate-Browser)) {
         Write-Log "Failed to activate browser" -Level "ERROR"
         $null = Sleep-Safe -Seconds (Get-Random -Min $MinInterval -Max $MaxInterval)
@@ -307,8 +311,8 @@ while ($true) {
     $next = (Get-Date).AddSeconds($wait)
     Write-Log "Done. Next refresh at: $($next.ToString('HH:mm:ss'))"
     
-    # 将浏览器最小化，避免一直置顶
-    Minimize-Browser
+    # 把前台窗口还给用户
+    Restore-ForegroundWindow -hWnd $prevHwnd
     
     $result = Sleep-Safe -Seconds $wait
     if ($result -eq "CTRLC") {
