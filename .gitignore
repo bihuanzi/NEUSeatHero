@@ -1,0 +1,18 @@
+# Seat Grabber v1.0 - Git Ignore
+
+# Sensitive - QQ credentials
+auth.txt
+qq.txt
+
+# Batch backup files
+*.bak
+
+# PowerShell transcript logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# OS files
+Thumbs.db
+Desktop.ini
