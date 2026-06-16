@@ -2,7 +2,8 @@
 使用ai工具的项目，一个运行在win系统上，检测东北大学mathe机考选考是否开放，并提供邮件推送的脚本
 
 # 使用qq邮箱，需要自己填写qq号和邮箱SMTP/IMAP服务授权码
-qq.txt和auth.txt内分别填入qq号和授权码
+将 qq.txt.example 重命名为 qq.txt 并填入QQ号
+将 auth.txt.example 重命名为 auth.txt 并填入邮箱SMTP授权码
 也许以后会更新自动选位的功能
 
 # 使用时保持edge已登录选考界面，运行启动.bat
