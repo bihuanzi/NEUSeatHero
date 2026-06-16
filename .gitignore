@@ -4,6 +4,9 @@
 auth.txt
 qq.txt
 
+# Sensitive - packet capture / debug files
+新建*.txt
+
 # Batch backup files
 *.bak
 
