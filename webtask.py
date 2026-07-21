@@ -214,20 +214,6 @@ def build_cookies(cookie_str):
             cookies[key.strip()] = value.strip()
     return cookies
 
-# ========== 调用 API ==========
-API_URL = "https://www.icourse163.org/web/j/courseBean.getLastLearnedMocTermDto.rpc"
-
-def get_course_data(session, term_id, csrf_key):
-    """获取课程完整数据"""
-    params = {"csrfKey": csrf_key}
-    data = {"termId": str(term_id)}
-    resp = session.post(API_URL, params=params, data=data)
-    result = resp.json()
-    if result.get("code") != 0:
-        print(f"  [错误] API 返回: {result}")
-        return None
-    return result["result"]["mocTermDto"]
-
 # ========== 解析作业/测验/考试 ==========
 def ts_to_str(ts):
     """毫秒时间戳 → 日期字符串"""
