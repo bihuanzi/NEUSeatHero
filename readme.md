@@ -1,7 +1,5 @@
 # pram_lifecontroler
 
-多功能校园生活自动化工具集
-
 ## 功能
 
 ### 1. 中国大学MOOC 作业检测 (`webtask.py`)
