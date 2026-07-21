@@ -1,0 +1,4 @@
+# 从浏览器登录 icourse163.org 后，F12 → Application → Cookies → icourse163.org
+# 复制 Cookie 值填入下方（一行）
+# 或者运行脚本时自动弹出浏览器登录
+NTESSTUDYSI=你的NTESSTUDYSI值; STUDY_SESS=你的STUDY_SESS值; STUDY_PERSIST=你的STUDY_PERSIST值

@@ -1,0 +1,13 @@
+# NEU数学机考选位 - 监控目标
+# 试卷ID（从选位页面 URL 或 API 请求中获取）
+paper_id=2c0238950fd24fedac44ef55c3c2486d
+
+# 目标机房关键词，逗号分隔
+keywords=南湖计算中心
+
+# 扫描间隔（秒）
+min_interval=60
+max_interval=120
+
+# 通知冷却（分钟），同一目标在这个时间内不重复通知
+cooldown=10

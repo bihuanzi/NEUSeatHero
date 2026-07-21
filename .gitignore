@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 敏感配置（包含密码、Cookie、邮箱授权码）
+config/cookie
+config/mathe_auth
+config/notify
+config/aimLesson
+config/aimedWebPath
+config/ignore
+
+# 日志和状态文件
+log/
+*.log
+
+# 抓包和临时文件
+bag
+seatpackeg
+*.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 原始版本
+NEUseathero/
+
+# 临时测试文件
+tsaktest.py
+
+# Chrome profile (Selenium)
+chrome_profile/

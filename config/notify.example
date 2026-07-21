@@ -1,0 +1,8 @@
+# SMTP 邮件通知配置
+# QQ邮箱: smtp.qq.com, SSL端口465
+# 需要开启SMTP服务获取授权码(非QQ密码)
+smtp_server=smtp.qq.com
+smtp_port=465
+sender=你的QQ号@qq.com
+password=你的QQ邮箱SMTP授权码
+to=接收邮箱@qq.com
