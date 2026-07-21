@@ -304,10 +304,9 @@ def main():
 
     try:
         while True:
-            try:
-                now_ts = datetime.now().timestamp()
-                ts_str = datetime.now().strftime('%H:%M:%S')
-                print(f"\n[{ts_str}] 扫描中...")
+            now_ts = datetime.now().timestamp()
+            ts_str = datetime.now().strftime('%H:%M:%S')
+            print(f"\n[{ts_str}] 扫描中...")
 
             dates = get_dates(session, token, paper_id)
             if not dates:
@@ -411,11 +410,6 @@ def main():
             next_time = datetime.now().timestamp() + wait
             print(f"  下次扫描: {datetime.fromtimestamp(next_time).strftime('%H:%M:%S')}")
             time.sleep(wait)
-
-            except Exception as e:
-                print(f"  [异常] {e}")
-                log_error(f"扫描异常: {e}", e)
-                time.sleep(30)  # 异常后等30秒再继续
 
     except KeyboardInterrupt:
         print("\n[停止] 监控已退出")
