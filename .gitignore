@@ -16,9 +16,9 @@ config/aimLesson
 config/aimedWebPath
 config/ignore
 
-# 日志和状态文件
-log/
-*.log
+# 日志目录（保留结构，不推内容）
+log/*
+!log/.gitkeep
 
 # 抓包和临时文件
 bag
