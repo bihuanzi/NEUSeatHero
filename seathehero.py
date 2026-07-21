@@ -305,10 +305,9 @@ def main():
     try:
         while True:
             try:
-                # 主循环体
                 now_ts = datetime.now().timestamp()
                 ts_str = datetime.now().strftime('%H:%M:%S')
-            print(f"\n[{ts_str}] 扫描中...")
+                print(f"\n[{ts_str}] 扫描中...")
 
             dates = get_dates(session, token, paper_id)
             if not dates:
